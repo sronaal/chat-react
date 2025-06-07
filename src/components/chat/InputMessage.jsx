@@ -1,14 +1,48 @@
+import { useState } from "react";
 import { BiSend } from "react-icons/bi";
+import EmojiPicker from 'emoji-picker-react';
+import { FaRegSmileBeam } from "react-icons/fa";
 
 
 function InputMessage() {
+
+  const [showPickerEmoji, setShowPickerEmoki] = useState(false)
+  const [messsage, setMessage] = useState("")
+
+
+  const handleSendMessage = async () => {
+
+    console.log(messsage)
+    setMessage('')
+    setShowPickerEmoki(false)
+  }
+  const emojiData = (emoji) => {
+    setMessage((prev) => prev + emoji.emoji)
+  }
   return (
-    <div>
-      <form className='flex items-center gap-4 '>
-        <input className='outline-none ring-1 ring-[#808080] w-full rounded-lg p-2' placeholder='Escribir su mensaje'/>
-        <BiSend className="w-10 h-10 cursor-pointer text-[#5b5b5b]"/>
-      </form>
-    </div>
+
+
+    <footer className="border-t border-gray-300 p-4 flex gap-2 items-center">
+      <div className='relative'>
+        <button className='bg-black cursor-pointer p-3' onClick={() => setShowPickerEmoki((prev) => !prev)}>
+          <FaRegSmileBeam className='text-white text-xl' />
+        </button>
+        <div className='absolute bottom-12'>
+          <EmojiPicker open={showPickerEmoji} onEmojiClick={emojiData} />
+        </div>
+      </div>
+      <input
+        value={messsage}
+        onChange={(e) => setMessage(e.target.value)}
+        type="text"
+        placeholder="Escribe un mensaje"
+        className=" border rounded-md w-full p-3"
+      />
+      <button onClick={handleSendMessage} className="bg-black cursor-pointer">
+       enviar
+      </button>
+    </footer>
+
   )
 }
 
