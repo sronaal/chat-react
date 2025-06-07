@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
 
-*{
-    color: #808080;
+
+.custom-scrollbar {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  
+  scrollbar-color: transparent transparent;
+}
+
+.custom-scrollbar:hover {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
 }
