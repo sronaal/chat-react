@@ -5,7 +5,7 @@ function LayoutChat() {
   return (
 
     <>
-      <div className='grid grid-cols-1 md:grid-cols-[1fr_3fr] h-auto md:h-[600px text-gray-700'>
+      <div className='grid grid-cols-1 md:grid-cols-[1fr_3fr]  h-auto md:h-[600px text-gray-700'>
         <Friends />
         <Messages />
 
