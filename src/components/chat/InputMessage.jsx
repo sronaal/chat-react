@@ -2,17 +2,27 @@ import { useState } from "react";
 import { BiSend } from "react-icons/bi";
 import EmojiPicker from 'emoji-picker-react';
 import { FaRegSmileBeam } from "react-icons/fa";
+import { usuarioAutenticado } from "../../libs/utils";
 
 
-function InputMessage() {
+function InputMessage({ socket }) {
 
   const [showPickerEmoji, setShowPickerEmoki] = useState(false)
   const [messsage, setMessage] = useState("")
-
+  
 
   const handleSendMessage = async () => {
 
     console.log(messsage)
+
+    const mensaje = {
+      receiver:"684356a2c247287a2312d19b",
+      sender: usuarioAutenticado.id,
+      content: messsage
+    }
+
+    socket.emit('enviar-mensajes', mensaje)
+
     setMessage('')
     setShowPickerEmoki(false)
   }
@@ -39,7 +49,7 @@ function InputMessage() {
         className=" border rounded-md w-full p-3"
       />
       <button onClick={handleSendMessage} className="bg-black cursor-pointer">
-       enviar
+        enviar
       </button>
     </footer>
 
