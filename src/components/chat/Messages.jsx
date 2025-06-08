@@ -15,7 +15,7 @@ function Messages() {
     <>
       <div className="grid grid-rows-[auto_3fr_auto] h-screen">
         <HeaderMessage />
-        <MessagesChat />
+        <MessagesChat socket={socket} />
         <InputMessage socket={socket} />
       </div>
     </>
