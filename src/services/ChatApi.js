@@ -8,3 +8,7 @@ export const obtenerMensajes = () => {
     return axios.get(`${serverApi}mensajes`)
 }
 
+export const iniciarSesion = (data) => {
+
+    return axios.post(`${serverApi}user/login`, data)
+}

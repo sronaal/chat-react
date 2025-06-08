@@ -1,17 +1,21 @@
-import React from 'react'
-import { schemaLoginForm }  from '../../libs/zod'
+import { schemaLoginForm } from '../../libs/zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { iniciarSesion } from '../../services/ChatApi'
+import { useNavigate } from 'react-router-dom'
 
 
 function Login() {
 
+  const navigate = useNavigate()
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(schemaLoginForm) })
 
-  const { register, handleSubmit,  formState: { errors }} = useForm({resolver: zodResolver(schemaLoginForm)})
+  const onSubmit = async (credenciales) => {
 
-  const onSubmit = (data) => {
-
-    console.log(data)
+    let { data } = await iniciarSesion(credenciales)
+    localStorage.setItem('token', data.token)
+    localStorage.setItem('user', data.userObject)
+    navigate('/', { replace: true })
   }
 
   return (
