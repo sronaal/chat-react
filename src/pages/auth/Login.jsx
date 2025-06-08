@@ -14,7 +14,7 @@ function Login() {
 
     let { data } = await iniciarSesion(credenciales)
     localStorage.setItem('token', data.token)
-    localStorage.setItem('user', data.userObject)
+    localStorage.setItem('user', JSON.stringify(data.userObject))
     navigate('/', { replace: true })
   }
 
