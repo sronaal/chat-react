@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import MessageSender from './MessageSender'
 import MessageReceiver from './MessageReceiver'
 import { obtenerMensajes } from '../../services/ChatApi'
@@ -7,6 +7,14 @@ const MessagesChat = ({ socket }) => {
 
   const [messages, setMessages] = useState([])
   const usuarioAutenticado = JSON.parse(localStorage.getItem('user'))
+  const bottomRef = useRef(null); // <== Aquí
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "auto" });
+
+  }, [messages]);
+
+
 
   useEffect(() => {
 
@@ -30,7 +38,7 @@ const MessagesChat = ({ socket }) => {
         //console.log(respuesta.data.mensajes)
         setMessages(respuesta.data.mensajes)
       })
-  }, [socket])
+  }, [socket, usuarioAutenticado.username])
 
   console.log(messages)
 
@@ -44,6 +52,8 @@ const MessagesChat = ({ socket }) => {
           <MessageReceiver key={mensaje._id} mensaje={mensaje.content} />
         );
       })}
+      <div ref={bottomRef} /> {/* Este div sirve para hacer scroll automático */}
+
 
     </main>
   )
