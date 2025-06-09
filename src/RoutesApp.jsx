@@ -6,7 +6,7 @@ import Register from './pages/auth/Register'
 import LayoutChat from './layout/LayoutChat'
 import { ProtectedRoute } from './ProtectedRoute'
 
-const isAuthenticated = localStorage.getItem('token') !== null
+//const isAuthenticated = localStorage.getItem('token') !== null
 
 function RoutesApp() {
     return (
@@ -14,12 +14,10 @@ function RoutesApp() {
         <Routes>
             <Route path='auth' element={<LayoutAuth />} >
                 <Route index element={<Login />}></Route>
-                <Route index element={<Register />}></Route>
+                <Route path='register' element={<Register />}></Route>
             </Route>
             <Route path='/' element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                    <LayoutChat />
-                </ProtectedRoute>
+                <LayoutChat />
             }>
             </Route>
         </Routes>
