@@ -7,14 +7,14 @@ import { URLSOCKET } from '../../libs/utils'
 
 
 
-function Messages() {
+function Messages({friend}) {
 
 
   const { socket } = useSocket(URLSOCKET)
   return (
     <>
       <div className="grid grid-rows-[auto_3fr_auto] h-screen">
-        <HeaderMessage />
+        <HeaderMessage friend={friend} />
         <MessagesChat socket={socket} />
         <InputMessage socket={socket} />
       </div>

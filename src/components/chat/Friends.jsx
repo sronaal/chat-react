@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import InputSearch from './InputSearch'
 import FriendItem from './FriendItem'
 import { obtenerUsuarios } from '../../services/UserApi'
-function Friends() {
+
+function Friends({ setFriend }) {
 
   const [usuarios, setUsuario] = useState([])
 
@@ -31,7 +32,7 @@ function Friends() {
       <section className='overflow-y-scroll custom-scrollbar'>
         {
           usuarios.map((usuarios) => (
-             <FriendItem key={usuarios._id} {...usuarios} />
+            <FriendItem setFriend={setFriend} key={usuarios._id} {...usuarios} />
           ))
         }
       </section>

@@ -1,9 +1,17 @@
 import React from 'react'
 
-function FriendItem({username, photoURL}) {
+function FriendItem({_id, username, photoURL, setFriend}) {
+
+    const selecionarUsuario = () => {
+
+        setFriend({_id, username, photoURL})
+        console.log(_id, username, photoURL)
+    }
+    
     return (
         <div>
-            <article className="flex items-center gap-x-4 py-4 px-5 border-b border-gray-200 hover:bg-gray-100 cursor-pointer">
+
+            <article onClick={() => selecionarUsuario()} className="flex items-center gap-x-4 py-4 px-5 border-b border-gray-200 hover:bg-gray-100 cursor-pointer">
                 <img
                     src={photoURL}
                     alt=""

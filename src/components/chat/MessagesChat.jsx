@@ -7,7 +7,7 @@ const MessagesChat = ({ socket }) => {
 
   const [messages, setMessages] = useState([])
   const usuarioAutenticado = JSON.parse(localStorage.getItem('user'))
-  const bottomRef = useRef(null); // <== Aquí
+  const bottomRef = useRef(null); // 
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "auto" });
@@ -40,7 +40,7 @@ const MessagesChat = ({ socket }) => {
       })
   }, [socket, usuarioAutenticado.username])
 
-  console.log(messages)
+  //console.log(messages)
 
   return (
     <main className="bg-indigo-100 p-4 space-y-2 overflow-y-auto h-full">
