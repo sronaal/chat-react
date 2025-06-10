@@ -1,12 +1,40 @@
-# React + Vite
+# 💬 Chat React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación de chat en tiempo real construida con React y Socket.IO. Utiliza TailwindCSS para los estilos y cuenta con formularios validados mediante `react-hook-form` y `zod`. Ideal como base para desarrollar una plataforma moderna de mensajería instantánea.
 
-Currently, two official plugins are available:
+## 🚀 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto implementa un chat en tiempo real utilizando:
 
-## Expanding the ESLint configuration
+- **Frontend:** React 19, React Router DOM, Vite, TailwindCSS
+- **Comunicación en tiempo real:** Socket.IO Client
+- **Validación de formularios:** React Hook Form + Zod
+- **Selector de emojis:** Emoji Picker React
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tecnologías
+
+- ⚛️ **React 19**
+- 🧭 **React Router DOM**
+- 🎨 **TailwindCSS**
+- 💬 **Socket.IO Client**
+- 📦 **Vite** como empaquetador
+- ✅ **Zod** + **React Hook Form** para validaciones
+- 😄 **emoji-picker-react**
+- 🧰 **ESLint** para linting del código
+
+## 📦 Instalación y ejecución
+
+Sigue estos pasos para clonar y ejecutar el proyecto localmente:
+
+```bash
+# 1. Clona el repositorio
+git clone https://github.com/sronaal/chat-react.git
+
+# 2. Entra a la carpeta del proyecto
+cd chat-react
+
+# 3. Instala las dependencias
+npm install
+
+# 4. Ejecuta el servidor de desarrollo
+npm run dev
