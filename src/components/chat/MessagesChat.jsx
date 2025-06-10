@@ -44,14 +44,18 @@ const MessagesChat = ({ socket }) => {
 
   return (
     <main className="bg-indigo-100 p-4 space-y-2 overflow-y-auto h-full">
-      {messages.map((mensaje) => {
-        //console.log('Mensaje:', mensaje.content, 'Sender:', mensaje.sender._id, 'User:', usuarioAutenticado.id)
-        return mensaje.sender._id === usuarioAutenticado.id ? (
-          <MessageSender key={mensaje._id} mensaje={mensaje.content} />
-        ) : (
-          <MessageReceiver key={mensaje._id} mensaje={mensaje.content} />
-        );
-      })}
+      {messages.length === 0 ? (
+        <p className="text-center text-gray-500">No hay mensajes aún.</p>
+      ) : (
+        messages.map((mensaje) => {
+          return mensaje.sender._id === usuarioAutenticado.id ? (
+            <MessageSender key={mensaje._id} mensaje={mensaje.content} />
+          ) : (
+            <MessageReceiver key={mensaje._id} mensaje={mensaje.content} />
+          );
+        })
+      )}
+
       <div ref={bottomRef} /> {/* Este div sirve para hacer scroll automático */}
 
 
