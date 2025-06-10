@@ -1,26 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import InputSearch from './InputSearch'
 import FriendItem from './FriendItem'
-
+import { obtenerUsuarios } from '../../services/UserApi'
 function Friends() {
+
+  const [usuarios, setUsuario] = useState([])
+
+  useEffect(() => {
+
+    obtenerUsuarios()
+      .then(({ data }) => {
+        setUsuario(data.usuarios)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+  }, [])
+
+  console.log(usuarios)
 
   return (
     <div className={`grid grid-rows-[auto_1fr] h-screen border-r border-gray-200`} >
 
       <section className='border-b border-gray-200 p-4'>
         <h1 className='text-xl font-bold mb-4'>Chat</h1>
-        <InputSearch/>
+        <InputSearch />
       </section>
 
       <section className='overflow-y-scroll custom-scrollbar'>
         {
-          Array.from({length: 10}).map((item,i) => (
-              <FriendItem key={i}/>
-
+          usuarios.map((usuarios) => (
+             <FriendItem key={usuarios._id} {...usuarios} />
           ))
         }
       </section>
-      
+
     </div>
   )
 }
