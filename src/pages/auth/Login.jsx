@@ -2,7 +2,7 @@ import { schemaLoginForm } from '../../libs/zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { iniciarSesion } from '../../services/ChatApi'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function Login() {
@@ -19,8 +19,8 @@ function Login() {
   }
 
   return (
-    <div className='bg-gray-100 md:max-w-[40%] w-[50%] h-[65%] rounded-2xl flex flex-col items-center p-4'>
-      <h1 className='font-bold text-2xl mb-10'>Iniciar <span className='text-green-400'>Sesión</span> </h1>
+    <div className='bg-gray-100 md:max-w-[30%] w-[50%] h-[65%] rounded-2xl flex flex-col items-center p-4'>
+      <h1 className='font-bold text-2xl mb-4'>Iniciar <span className='text-green-400'>Sesión</span> </h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Usuario:</label>
@@ -38,7 +38,11 @@ function Login() {
           className='border w-full p-2 rounded-md mb-4'
         />
         <p className='text-red-500 mb-2'>{errors.password?.message}</p>
-        <button type='submit' className='w-full bg-green-400 p-3 rounded-lg'>Iniciar Sesión</button>
+        <button type='submit' className='w-full bg-green-400 p-3 rounded-lg mb-4'>Iniciar Sesión</button>
+        <p className='flex gap-4 text-sm'>¿No tienes una cuenta? 
+
+          <Link className='text-sm hover:text-xl text-green-400' to='/auth/register'>Registrate</Link>
+        </p>
       </form>
     </div>
   )
